@@ -1,6 +1,6 @@
 package com.nayek.linkedlist;
 
-public class PrintLinkedList {
+public class LengthOfLinkedList {
 
 	static class Node {
 		int data;
@@ -20,8 +20,17 @@ public class PrintLinkedList {
 		}
 	}
 
-	public static void main(String[] args) {
+	public int length(Node head) {
+		Node temp = head;
+		int counter = 1;
+		while (temp.next!= null) {
+			counter++;
+			temp = temp.next;
+		}
+		return counter;
+	}
 
+	public static void main(String[] args) {
 		Node head = new Node(10);
 		Node second = new Node(40);
 		Node third = new Node(9);
@@ -33,9 +42,8 @@ public class PrintLinkedList {
 		third.next = fourth;
 		fourth.next = fifth;
 
-		PrintLinkedList pl = new PrintLinkedList();
-		pl.displayList(head);
-
+		LengthOfLinkedList ll = new LengthOfLinkedList();
+		System.out.println("Size of linked list= " + ll.length(head));
+		ll.displayList(head);
 	}
-
 }

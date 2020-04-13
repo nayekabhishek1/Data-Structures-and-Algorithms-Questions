@@ -1,6 +1,6 @@
 package com.nayek.linkedlist;
 
-public class PrintLinkedList {
+public class MiddleOfLinkedList {
 
 	static class Node {
 		int data;
@@ -18,10 +18,10 @@ public class PrintLinkedList {
 			System.out.print(temp.data + " ");
 			temp = temp.next;
 		}
+		System.out.println("");
 	}
 
 	public static void main(String[] args) {
-
 		Node head = new Node(10);
 		Node second = new Node(40);
 		Node third = new Node(9);
@@ -33,9 +33,21 @@ public class PrintLinkedList {
 		third.next = fourth;
 		fourth.next = fifth;
 
-		PrintLinkedList pl = new PrintLinkedList();
-		pl.displayList(head);
+		MiddleOfLinkedList ll = new MiddleOfLinkedList();
+		ll.displayList(head);
+		System.out.println("The middle node is :" + ll.findMidNode(head));
+	}
 
+	private int findMidNode(Node head) {
+
+		Node fast = head;
+		Node slow = head;
+		while (fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		}
+
+		return slow.data;
 	}
 
 }
