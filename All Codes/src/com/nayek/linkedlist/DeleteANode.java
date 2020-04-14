@@ -1,6 +1,6 @@
 package com.nayek.linkedlist;
 
-public class PrintLinkedList {
+public class DeleteANode {
 
 	static class Node {
 		int data;
@@ -10,9 +10,10 @@ public class PrintLinkedList {
 			this.data = data;
 			next = null;
 		}
+
 	}
 
-	public void displayList(Node head) {
+	public static void displayList(Node head) {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");
@@ -21,8 +22,20 @@ public class PrintLinkedList {
 		System.out.println("");
 	}
 
-	public static void main(String[] args) {
+	public static void deleteNode(Node head, int nodeIndex) {
+		Node temp = head;
+		int counter = 1;
+		while (counter + 1 != nodeIndex) {
+			counter++;
+			temp = temp.next;
+		}
 
+		temp.next = temp.next.next;
+		System.out.println("After deletion of " + nodeIndex + "th node :");
+		displayList(head);
+	}
+
+	public static void main(String[] args) {
 		Node head = new Node(10);
 		Node second = new Node(40);
 		Node third = new Node(9);
@@ -34,8 +47,8 @@ public class PrintLinkedList {
 		third.next = fourth;
 		fourth.next = fifth;
 
-		PrintLinkedList pl = new PrintLinkedList();
-		pl.displayList(head);
+		displayList(head);
+		deleteNode(head, 4);
 
 	}
 
